@@ -15,9 +15,9 @@
         "========================",
       ];
       const tasks = [
-        ["机を片付ける", "掃除"],
-        ["牛乳を買う", "買い物"],
-        ["散歩する", "運動"],
+        { content: "机を片付ける", genre: "掃除" },
+        { content: "牛乳を買う", genre: "買い物" },
+        { content: "散歩する", genre: "運動" },
       ];
 
       outputTaskList();
@@ -26,29 +26,21 @@
         for (let i = 0; i < heading.length; i++) {
           console.log(heading[i]);
         }
-        for (let j = 0; j < tasks.length; j++) {
+        tasks.forEach(function (task, index) {
           console.log(
-            j + " ： [内容]" + tasks[j][0] + "、[ジャンル]" + tasks[j][1]
+            index + " ： [内容]" + task.content + "、[ジャンル]" + task.genre
           );
-        }
+        });
       }
 
-      let task = "";
+      const task = prompt("タスクを入力してください");
 
-      while (task !== null) {
-        task = prompt("タスクを入力してください");
-
-        if (task !== null) {
-          let genre = "";
-
-          genre = prompt("ジャンルを入力してください");
-          if (genre !== null) {
-            tasks.push([task, genre]);
-            alert("新しいタスクを追加しました。");
-            outputTaskList();
-          } else {
-            task = null; // ジャンルの入力時に「キャンセル」を選択した場合にループを抜ける
-          }
+      if (task !== null) {
+        const genre = prompt("ジャンルを入力してください");
+        if (genre !== null) {
+          tasks.push({ content: task, genre: genre });
+          alert("新しいタスクを追加しました。");
+          outputTaskList();
         }
       }
     </script>
