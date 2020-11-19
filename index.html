@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>課題①-4</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      const heading = [
+        "========================",
+        "現在持っているタスクの一覧",
+        "========================",
+      ];
+      const tasks = [
+        { content: "机を片付ける", genre: "掃除" },
+        { content: "牛乳を買う", genre: "買い物" },
+        { content: "散歩する", genre: "運動" },
+      ];
+
+      outputTaskList();
+
+      function outputTaskList() {
+        for (let i = 0; i < heading.length; i++) {
+          console.log(heading[i]);
+        }
+        tasks.forEach((task, index) => {
+          console.log(
+            index + " ： [内容]" + task.content + "、[ジャンル]" + task.genre
+          );
+        });
+      }
+
+      const task = prompt("タスクを入力してください");
+
+      if (task !== null) {
+        const genre = prompt("ジャンルを入力してください");
+        if (genre !== null) {
+          tasks.push({ content: task, genre: genre });
+          alert("新しいタスクを追加しました。");
+          outputTaskList();
+        }
+      }
+    </script>
+  </body>
+</html>
